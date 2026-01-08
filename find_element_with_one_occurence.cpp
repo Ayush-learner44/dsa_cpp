@@ -62,6 +62,7 @@ int findOne_2(vector<int> v)
     }
 
     for (auto i : m)
+
         if (i.second == 1)
             return i.first;
     return -1;
