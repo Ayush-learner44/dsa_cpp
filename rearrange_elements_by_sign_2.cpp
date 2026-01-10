@@ -1,4 +1,4 @@
-// arrange the +ve on odd positions and -ves on the even positions..that's it...but this time the number of -ves and +ves are not equal and therefore keep the rest numbers at the end.
+// arrange the +ve on even positions and -ves on the odd positions..that's it...but this time the number of -ves and +ves are not equal and therefore keep the rest numbers at the end.
 
 #include <iostream>
 #include <vector>
@@ -21,58 +21,29 @@ void rearrange(vector<int> &v)
             negative.emplace_back(v[i]);
     }
 
-    int s1 = positive.size(), s2 = negative.size();
+    int i = 0, k = 0;
 
-    if (s1 == s2)
+    while (k < positive.size() and k < negative.size())
     {
-        for (int i = 0; i < n / 2; i++)
-        {
-            v[2 * i] = positive[i];
-            v[2 * i + 1] = negative[i];
-        }
+        v[i++] = positive[k];
+        v[i++] = negative[k];
+        k++;
     }
-    else if (s1 > s2)
+
+    while (k < positive.size())
     {
-        int i = 0;
-
-        for (; i < s2; i++)
-        {
-            v[2 * i] = positive[i];
-            v[2 * i + 1] = negative[i];
-        }
-
-        i = 2 * i;
-        int k = i;
-
-        while (k < s1 and i < n)
-        {
-            v[i++] = positive[k++];
-        }
+        v[i++] = positive[k++];
     }
-    else
+    while (k < negative.size())
     {
-        int i = 0;
-
-        for (; i < s1; i++)
-        {
-            v[2 * i] = positive[i];
-            v[2 * i + 1] = negative[i];
-        }
-
-        i = 2 * i + 1;
-        int k = i;
-
-        while (k < s2 and i < n)
-        {
-            v[i++] = positive[k++];
-        }
+        v[i++] = negative[k++];
     }
 }
 
 int main()
 {
     // vector<int> v = {-1, 2, 3, 4, -6, -7, -8, 0, -3, -4, -8};
-    vector<int> v = {-1, 2, 3, 4, -6, -7, -8, 0, 3, 4, 8};
+    vector<int> v = {-1, 2, 3, 4, -6, -7, -8, 0};
     rearrange(v);
     for (int i : v)
         cout << i << " ";
