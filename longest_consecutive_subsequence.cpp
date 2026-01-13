@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <unordered_set>
 
 using namespace std;
 
@@ -26,31 +27,46 @@ int lcs_better(vector<int> v)
 {
     sort(v.begin(), v.end());
 
-    int k = 1, current, maximum = 1;
+    int max_streak = 1, streak = 1, last_smaller = v[0];
 
-    for (int i = 0; i < v.size(); i++)
+    for (int i = 1; i < v.size(); i++)
     {
-        current = v[i];
-        while (i < v.size())
+        if (last_smaller + 1 == v[i])
         {
-            if (current == v[i])
-            {
-                i++;
-                continue;
-            }
-            else if ((current + 1) == v[i])
-                k++, i++, current++;
-
-            else
-            {
-                maximum = max(maximum, k);
-                k = 1;
-                break;
-            }
+            streak++;
+            last_smaller = v[i];
+        }
+        else if (last_smaller != v[i])
+        {
+            max_streak = max(max_streak, streak);
+            last_smaller = v[i];
+            streak = 1;
         }
     }
 
-    return maximum;
+    return max(max_streak, streak);
+}
+
+// optimal
+int lcs_optimal(vector<int> v)
+{
+    int max_streak = 1, streak = 1;
+    unordered_set<int> st(v.begin(), v.end());
+
+    for (auto i : st)
+    {
+        if (st.find(i - 1) == st.end())
+        {
+            int x = i;
+            while (st.find(x + 1) != st.end())
+            {
+                streak++, x++;
+            }
+            max_streak = max(max_streak, streak);
+            streak = 1;
+        }
+    }
+    return max_streak;
 }
 
 int main()
@@ -91,4 +107,5 @@ int main()
     };
     cout << lcs(v) << endl;
     cout << lcs_better(v) << endl;
+    cout << lcs_optimal(v) << endl;
 }
