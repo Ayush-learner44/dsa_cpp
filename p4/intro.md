@@ -220,13 +220,3 @@ All at **line rate**.
 > The Internet of Things is growing rapidly, and MQTT has become the dominant protocol for communication among IoT devices. However, MQTT deployments are highly insecure, with many brokers exposed, traffic unencrypted, and real vulnerabilities actively exploited. Existing security solutions fail because cloud-based systems are too slow, CPU-based firewalls cannot inspect MQTT deeply at high speed, and SDN approaches do not understand MQTT semantics. As a result, critical protocol-level protections like session validation, topic authorization, and behavior monitoring are missing. This paper argues that these problems require a protocol-aware, hardware-speed solution at the network edge, which motivates the use of P4 programmable data planes for enforcing MQTT security in real time.
 
 ---
-
-If you want, next we can do:
-
-* **Related Work (Table I explained line by line)**
-* **System Architecture (Fig. 1)**
-* **Parser design**
-* **Ingress pipeline logic**
-* **Evaluation results**
-
-You choose.

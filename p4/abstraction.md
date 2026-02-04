@@ -237,6 +237,3 @@ Next steps:
 > MQTT is widely used in IoT but is poorly protected at the network edge. Existing cloud IDS systems are too slow, and traditional firewalls or SDN solutions don’t understand MQTT well enough. This paper proposes a P4-based system that runs directly inside network switches at the edge and understands MQTT messages. It safely parses MQTT headers, checks that messages follow correct protocol order, enforces topic-based permissions, limits traffic per client, and detects suspicious behavior using simple MQTT features. The system is fast, accurate, and scalable, proving that real-time MQTT security can be enforced directly in the programmable data plane.
 
 ---
-
-You can now ask **any question from any section** (intro, design, figures, equations, tables, evaluation).
-I’m ready.
